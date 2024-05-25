@@ -15,5 +15,5 @@ jobs:
       - uses: cachix/cachix-action@v15
         with:
           name: nixcache
-      - run: nix build .
+      - run: nix develop
       - run: make presentation.html
