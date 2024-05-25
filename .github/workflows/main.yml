@@ -15,5 +15,4 @@ jobs:
       - uses: cachix/cachix-action@v15
         with:
           name: nixcache
-      - run: nix develop
-      - run: make presentation.html
+      - run: nix develop --command bash -c 'make presentation.html'
