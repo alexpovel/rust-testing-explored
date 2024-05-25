@@ -1,0 +1,9 @@
+[package]
+name = "rust-testing-explored"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[dev-dependencies]
+rstest = "0.19.0"
