@@ -44,6 +44,9 @@
             cargo-edit
             cargo-watch
             rust-analyzer
+            pandoc
+            gnumake
+            cargo-watch
           ];
         };
       });

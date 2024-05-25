@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use rust_meetup::first_name;
+    use rust_testing_explored::first_name;
 
     #[test]
     fn test_public_first_name_functionality() {

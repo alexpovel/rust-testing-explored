@@ -1,31 +1,56 @@
-% Habits
-% John Doe
-% March 22, 2005
+---
+title: Testing in Rust explored
+subtitle: Towards fearless development
+author: 'Alex Povel'
+date: '2024-06-05'
+theme: dracula
+---
+<!-- markdownlint-disable MD025 -->
 
-# In the morning
+# You will get
 
-## Getting up
+- an overview of...
+  - basics of testing in Rust
+  - more advanced approaches & tools
+- ...improving your software:
+  - uncovering bugs the type system can't
+  - keeping documentation in sync
+  - understanding it more deeply
 
-- Turn off alarm
-- Get out of bed
+# `$ whoami`
 
-## Breakfast
+- started Rust late 2022
+- implemented `srgn` for practice
+- today, use Rust at Cloudflare as well
 
-- Eat eggs
-- Drink coffee
+# Exploring testing
 
-# In the evening
+## Basics
 
-## Dinner
+- unit tests
+- integration tests
+- doc tests (+ `README.md`)
 
-- Eat spaghetti
-- Drink wine
+## Advanced
 
-------------------
+- fuzzing
+- snapshot tests
+- property tests
+- benchmarks
 
-![picture of spaghetti](images/spaghetti.jpg)
+# Code samples
 
-## Going to sleep
+## Unit tests
 
-- Get in bed
-- Count sheep
+## Integration tests
+
+## Doc tests
+
+- do not extend to `README.md`. Solutions:
+  - [include in source code](https://github.com/alexpovel/b4s/blob/c6ccf71cccfde2e12e1e9e1cc0e07ce5ccf802f2/src/lib.rs#L12):
+
+    ```rust
+    #![doc = include_str!("../README.md")]
+    ```
+
+  - [write custom code](https://github.com/alexpovel/srgn/blob/1a8b3a0bd2f3bb57cc2ede7463ac725a1bb581e4/tests/readme.rs)

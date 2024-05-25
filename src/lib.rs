@@ -3,7 +3,7 @@
 /// # Example
 ///
 /// ```
-/// use rust_meetup::first_name;
+/// use rust_testing_explored::first_name;
 ///
 /// assert_eq!(Some("John"), first_name("John Doe Jr."));
 /// ```
