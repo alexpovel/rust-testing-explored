@@ -1,6 +1,0 @@
-[submodule "srgn"]
-	path = srgn
-	url = git@github.com:alexpovel/srgn.git
-[submodule "b4s"]
-	path = b4s
-	url = git@github.com:alexpovel/b4s.git

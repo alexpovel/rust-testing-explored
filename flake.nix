@@ -42,11 +42,11 @@
             pkg-config
             cargo-deny
             cargo-edit
+            cargo-insta
             cargo-watch
             rust-analyzer
             pandoc
             gnumake
-            cargo-watch
           ];
         };
       });

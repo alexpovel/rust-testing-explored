@@ -1,0 +1,31 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Some API description",
+        "version": "1.33.7"
+    },
+    "paths": {
+        "/waldo": {
+            "get": {
+                "summary": "Get Waldo",
+                "responses": {
+                    "200": {
+                        "description": "Get Waldo",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "waldo": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
