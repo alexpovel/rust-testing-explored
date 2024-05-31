@@ -1,0 +1,7 @@
+# Seeds for failure cases proptest has generated in the past. It is
+# automatically read and these particular cases re-run before any
+# novel cases are generated.
+#
+# It is recommended to check this file in to source control so that
+# everyone who runs the test benefits from these saved cases.
+cc e132a1b3050966ec9efc9db0bf0ceee22eea98cec7bbc902b3a24492eb485094 # shrinks to mut ranges = Ranges { inner: [0..0, 1..1], merged: false }

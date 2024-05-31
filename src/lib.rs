@@ -1,5 +1,4 @@
-#[cfg(test)]
-mod fuzzing;
+pub mod fuzzing;
 #[cfg(test)]
 mod property;
 #[cfg(test)]
@@ -10,6 +9,8 @@ mod snapshot;
 /// Gets the first name of `name`.
 ///
 /// # Example
+///
+/// **Great** example! _Fantastic_.
 ///
 /// ```
 /// use rust_testing_explored::first_name;

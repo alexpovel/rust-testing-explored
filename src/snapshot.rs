@@ -31,7 +31,7 @@ fn test_hiding_waldo() {
 
     hide_waldo(&mut doc);
 
-    let let_me_suffer = true;
+    let let_me_suffer = false;
     if let_me_suffer {
         use openapi_schema::{
             v3::{

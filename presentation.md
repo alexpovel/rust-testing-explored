@@ -8,19 +8,16 @@ theme: dracula
 
 # You will get
 
-- an overview of:
-  - basics of testing in Rust
-  - more advanced approaches & tools
-- ideas on improving trust in your systems:
-  - uncovering bugs the type system can't
-  - keeping documentation in sync
-  - understanding it more deeply
+- an introduction to more advanced approaches & tools, to
+  - ...uncover bugs the type system can't
+  - ...keep documentation in sync
+  - ...building more robust software with more confidence, and stronger resistance to regression
 
 # `$ whoami`
 
 - started Rust late 2022
 - implemented `srgn` & `b4s` for practice
-- today, also use Rust at Cloudflare
+- today, also use Rust at my work at Cloudflare
 
 # Exploring testing
 
@@ -37,8 +34,10 @@ theme: dracula
 
 ## Topics
 
-- ~~Unit and integration tests~~ ⏳
-- Doc tests (+ `README.md`)
+- ~~Unit tests~~ [↗](https://doc.rust-lang.org/book/ch11-01-writing-tests.html)
+- ~~Integration tests~~ [↗](https://doc.rust-lang.org/book/ch11-03-test-organization.html#integration-tests)
+- ~~Doc tests~~ [↗](https://doc.rust-lang.org/book/ch14-02-publishing-to-crates-io.html#documentation-comments-as-tests)
+- Doc tests for `README.md`
 - Fuzzing
 - Property testing
 - Snapshot testing
@@ -81,10 +80,8 @@ theme: dracula
 
 🧑‍💻 -->
 
-# Doc tests
+<!-- # Doc tests
 
-- your users' first, often only point of contact
-- these **determine your interface**
 
 ## When?
 
@@ -99,10 +96,12 @@ theme: dracula
 
 ## Demo
 
-🧑‍💻
+🧑‍💻 -->
 
-# Doc tests for `README.md`
+# `README.md` doc tests
 
+- your users' first, often only point of contact
+- these **determine your interface**
 - Rust doc tests are specific to Rust code
   - not applicable to binary artifacts
   - do not extend to `README.md`
@@ -110,15 +109,16 @@ theme: dracula
 ## When?
 
 - you have a binary crate, aka a user-facing program
+- DTDD?
 
 ## How?
 
-- write custom code ([link](https://github.com/alexpovel/srgn/blob/1a8b3a0bd2f3bb57cc2ede7463ac725a1bb581e4/tests/readme.rs)):
+- write custom code [↗](https://github.com/alexpovel/srgn/blob/1a8b3a0bd2f3bb57cc2ede7463ac725a1bb581e4/tests/readme.rs)
   - minimal `bash` interpreter written with `nom`
   - exercises code snippets in `README.md`
   - uses actual program binary
 
-- hack for libraries: include in source code ([link](https://github.com/alexpovel/b4s/blob/c6ccf71cccfde2e12e1e9e1cc0e07ce5ccf802f2/src/lib.rs#L12)):
+- hack for libraries: include in source code [↗](https://github.com/alexpovel/b4s/blob/c6ccf71cccfde2e12e1e9e1cc0e07ce5ccf802f2/src/lib.rs#L12)
 
   ```rust
   #![doc = include_str!("../README.md")]
@@ -151,17 +151,19 @@ theme: dracula
 
 ## How?
 
-- source of random bytes
+- `cargo-fuzz` [↗](https://rust-fuzz.github.io/book/introduction.html)
+  - based on `libFuzzer` [↗](https://llvm.org/docs/LibFuzzer.html)
+- source of random-ish bytes
 - mold into valid structure
 - observe
 
 ## Demo
 
-🧑‍💻
+🙅⌛️
 
 # Property
 
-- contracts: ensure property holds
+- like contracts: **ensure property holds**
   - testing all `sort(input)` permutations is _impossible_
   - asserting that for any `input`, results are sorted is _trivial_
 - more abstract than regular tests, more guided than fuzzing
@@ -173,7 +175,7 @@ theme: dracula
 
 ## How?
 
-- `proptest` ([link](https://docs.rs/proptest/latest/proptest/))
+- `proptest` [↗](https://docs.rs/proptest/latest/proptest/)
   - based on Python's _Hypothesis_, Haskell's _QuickCheck_
 
 ## Demo
@@ -211,7 +213,7 @@ assert_eq!(ranges, r#"
 
 ## How?
 
-- `insta` ([link](https://docs.rs/insta/latest/insta/))
+- `insta` [↗](https://docs.rs/insta/latest/insta/)
 
 ## Demo
 
@@ -240,9 +242,19 @@ assert_eq!(ranges, r#"
 
 🧑‍💻
 
+# Thanks!
+
+Thank you very much for your attention!
+
+[github.com/alexpovel/rust-testing-explored](https://github.com/alexpovel/rust-testing-explored/)
+
+<img src="./static/qrcode.svg" alt="qr code slides repo" width="300" height="300">
+
 # Further Reading
 
 - [Rust Fuzz Book](https://rust-fuzz.github.io/book/introduction.html)
 - [Proptest](https://proptest-rs.github.io/proptest/intro.html)
 - [Insta](https://docs.rs/insta/latest/insta/)
 - [`README.md` doc testing](https://github.com/alexpovel/srgn/blob/1a8b3a0bd2f3bb57cc2ede7463ac725a1bb581e4/tests/readme.rs)
+- [Announcing Better Support for Fuzzing with Structured Inputs in Rust](https://fitzgeraldnick.com/2020/01/16/better-support-for-fuzzing-structured-inputs-in-rust.html)
+- [How to write tests](https://doc.rust-lang.org/book/ch11-01-writing-tests.html)

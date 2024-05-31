@@ -1,6 +1,3 @@
-#![feature(proc_macro_c_str_literals)]
-#![feature(proc_macro_byte_character)]
-
 //! Copied from https: //github.com/alexpovel/srgn/tree/06b17c10e4be0a12acae74a6f3b00cf7e5960414
 use itertools::Itertools;
 use proptest_derive::Arbitrary;
@@ -83,7 +80,7 @@ impl<Idx: Ord + Copy + Debug> Ranges<Idx> {
         self.inner = res;
         self.inner.shrink_to_fit(); // Might have removed elements, so yield memory back
 
-        // self.merged = true; // ⚠️ Triggers bug, caught by property testing
+        self.merged = true; // ⚠️ Triggers bug, caught by property testing
         self
     }
 

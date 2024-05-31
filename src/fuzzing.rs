@@ -1,5 +1,5 @@
 //! Copied from https://github.com/alexpovel/b4s/tree/c6ccf71cccfde2e12e1e9e1cc0e07ce5ccf802f2
-use ascii::AsciiChar;
+pub use ascii::AsciiChar;
 use itertools::Itertools;
 use std::{cmp::Ordering, ops::Range};
 
@@ -34,7 +34,13 @@ pub fn binary_search(
             None => rightmost,
         };
 
-        let haystack_word = std::str::from_utf8(&haystack[start..end])
+        let range = if cfg!(fuzzing) {
+            start..(end + 1) // ⚠️ Off-by-one error
+        } else {
+            start..end
+        };
+
+        let haystack_word = std::str::from_utf8(&haystack[range])
             .expect("Indices aren't valid for slicing into haystack. They are at ASCII chars and therefore always assumed valid.");
 
         match needle.cmp(haystack_word) {
