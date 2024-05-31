@@ -4,8 +4,17 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+ascii = "1.1.0"
+itertools = "0.13.0"
 openapi-schema = "0.1.10"
 
 [dev-dependencies]
 insta = { version = "1.39.0", features = ["json"] }
+proptest = "1.4.0"
+proptest-derive = "0.4.0"
 rstest = "0.19.0"
+
+[workspace]
+members = [
+    "fuzz", # This is its own, nested crate, and isn't picked up cleanly otherwise (IDE, ...)
+]

@@ -37,6 +37,7 @@ theme: dracula
 
 ## Topics
 
+- ~~Unit and integration tests~~ ⏳
 - Doc tests (+ `README.md`)
 - Fuzzing
 - Property testing
@@ -179,6 +180,24 @@ theme: dracula
 
 🧑‍💻
 
+```rust
+let mut ranges: Vec<Range<usize>> = r#"
+ ┣━━━┫  ┣━━━━━┫   ┣━┫
+"#;
+
+ranges.push(r#"
+   ┣━━━━━┫
+"#);
+
+ranges.merge(); // Idempotent!
+
+assert_eq!(ranges, r#"
+ ┣━━━━━━━━━━━━┫   ┣━┫
+"#);
+```
+<!-- ×⊗︎○︎•●🞊◉○⃝○︎⧇⨭ -->
+<!-- |-◒◖●●◗◓--●--●●●---●●●●| -->
+
 # Snapshot
 
 - not a technique in itself
@@ -221,4 +240,9 @@ theme: dracula
 
 🧑‍💻
 
-# mutants?
+# Further Reading
+
+- [Rust Fuzz Book](https://rust-fuzz.github.io/book/introduction.html)
+- [Proptest](https://proptest-rs.github.io/proptest/intro.html)
+- [Insta](https://docs.rs/insta/latest/insta/)
+- [`README.md` doc testing](https://github.com/alexpovel/srgn/blob/1a8b3a0bd2f3bb57cc2ede7463ac725a1bb581e4/tests/readme.rs)

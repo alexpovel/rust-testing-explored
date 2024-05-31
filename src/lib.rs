@@ -1,4 +1,8 @@
 #[cfg(test)]
+mod fuzzing;
+#[cfg(test)]
+mod property;
+#[cfg(test)]
 mod rstest;
 #[cfg(test)]
 mod snapshot;

@@ -43,7 +43,9 @@
             cargo-deny
             cargo-edit
             cargo-insta
+            cargo-fuzz
             cargo-watch
+            cargo-mutants
             rust-analyzer
             pandoc
             gnumake
