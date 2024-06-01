@@ -24,7 +24,7 @@ theme: dracula
 - Why?
 - When?
 - How?
-- Demo 💥
+- Demos 💥
 
 <!-- ## Basics
 
@@ -41,7 +41,15 @@ theme: dracula
 - Fuzzing
 - Property testing
 - Snapshot testing
-- CI setup (with code coverage)
+
+## Extra?
+
+- CI setup [↗](https://github.com/alexpovel/srgn/blob/06b17c10e4be0a12acae74a6f3b00cf7e5960414/.github/workflows/main.yml), with...
+  - multi-OS tests
+  - test coverage reports, by category [↗](https://app.codecov.io/gh/alexpovel/srgn/flags)
+  - feature powerset tests [↗](https://github.com/taiki-e/cargo-hack/blob/f7a774cce64457bb1fc578c96c118b4f98adff89/README.md#--feature-powerset)
+  - MSRV checks [↗](https://github.com/foresterre/cargo-msrv)
+  - binary artifact publishing e2e test [↗](https://github.com/cargo-bins/cargo-binstall)
 
 <!-- # Unit tests
 
@@ -113,12 +121,12 @@ theme: dracula
 
 ## How?
 
-- write custom code [↗](https://github.com/alexpovel/srgn/blob/1a8b3a0bd2f3bb57cc2ede7463ac725a1bb581e4/tests/readme.rs)
+- write custom code [↗](https://github.com/alexpovel/srgn/blob/06b17c10e4be0a12acae74a6f3b00cf7e5960414/README.md)
   - minimal `bash` interpreter written with `nom`
   - exercises code snippets in `README.md`
   - uses actual program binary
 
-- hack for libraries: include in source code [↗](https://github.com/alexpovel/b4s/blob/c6ccf71cccfde2e12e1e9e1cc0e07ce5ccf802f2/src/lib.rs#L12)
+- hack for libraries: include in source code [↗](https://github.com/alexpovel/b4s/blob/c6ccf71cccfde2e12e1e9e1cc0e07ce5ccf802f2/README.md)
 
   ```rust
   #![doc = include_str!("../README.md")]
@@ -157,10 +165,6 @@ theme: dracula
 - mold into valid structure
 - observe
 
-## Demo
-
-🙅⌛️
-
 # Property
 
 - like contracts: **ensure property holds**
@@ -183,19 +187,10 @@ theme: dracula
 🧑‍💻
 
 ```rust
-let mut ranges: Vec<Range<usize>> = r#"
- ┣━━━┫  ┣━━━━━┫   ┣━┫
-"#;
-
-ranges.push(r#"
-   ┣━━━━━┫
-"#);
-
+let mut ranges = vec![0..2, 5..10, 40..50];
+ranges.push(1..7); // Overlaps
 ranges.merge(); // Idempotent!
-
-assert_eq!(ranges, r#"
- ┣━━━━━━━━━━━━┫   ┣━┫
-"#);
+assert_eq!(ranges, vec![0..10, 40..50]);
 ```
 <!-- ×⊗︎○︎•●🞊◉○⃝○︎⧇⨭ -->
 <!-- |-◒◖●●◗◓--●--●●●---●●●●| -->
@@ -218,7 +213,7 @@ assert_eq!(ranges, r#"
 ## Demo
 
 🧑‍💻
-
+<!--
 # Continuous Integration
 
 - automate running all of these
@@ -240,7 +235,7 @@ assert_eq!(ranges, r#"
 
 ## Demo
 
-🧑‍💻
+🧑‍💻 -->
 
 # Thanks!
 

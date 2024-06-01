@@ -27,7 +27,7 @@
             cargo-insta
             cargo-fuzz
             cargo-watch
-            cargo-mutants
+            cargo-msrv
             rust-analyzer
             pandoc
             gnumake
@@ -35,7 +35,7 @@
 
           shellHook = ''
             # Marked as broken in Nix; I don't have the time figuring out Rust nightly,
-            # LLVM tooling, and Nix (overlays) in combination.
+            # LLVM tooling, and Nix (overlays) in combination 🤕
             cargo install cargo-llvm-cov
           '';
         };

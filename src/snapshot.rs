@@ -27,10 +27,13 @@ fn hide_waldo(doc: &mut Doc) -> &mut Doc {
 
 #[test]
 fn test_hiding_waldo() {
+    // Arrange
     let mut doc = openapi_schema::from_str(SCHEMA).expect("hard-coded schema is valid");
 
+    // Act
     hide_waldo(&mut doc);
 
+    // Assert
     let let_me_suffer = false;
     if let_me_suffer {
         use openapi_schema::{

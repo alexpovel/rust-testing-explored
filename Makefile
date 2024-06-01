@@ -1,5 +1,5 @@
-%.html: %.md
-	pandoc --to=revealjs --incremental --embed-resources --standalone --slide-level=2 --output=$@ $<
+%.html: %.md custom.html
+	pandoc --to=revealjs --incremental --embed-resources --standalone --slide-level=2 --include-in-header=custom.html --output=$@ $<
 
 .PHONY: fuzz
 watch:

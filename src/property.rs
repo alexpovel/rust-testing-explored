@@ -122,11 +122,11 @@ mod tests {
             mut ranges in any::<Vec<Range<usize>>>().prop_map(Ranges::from_iter),
         ) {
             ranges.merge();
-            let before = ranges.clone();
+            let after_first = ranges.clone();
             ranges.merge();
-            let after = ranges;
+            let after_second = ranges;
 
-            prop_assert_eq!(before, after);
+            prop_assert_eq!(after_first, after_second);
         }
     }
 }
