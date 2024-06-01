@@ -106,10 +106,10 @@ theme: dracula
 
 🧑‍💻 -->
 
-# `README.md` doc tests
+# README doc tests
 
 - your users' first, often only point of contact
-- these **determine your interface**
+- **determines your interface**
 - Rust doc tests are specific to Rust code
   - not applicable to binary artifacts
   - do not extend to `README.md`
@@ -167,6 +167,7 @@ theme: dracula
 
 # Property
 
+- fuzzing's cousin
 - like contracts: **ensure property holds**
   - testing all `sort(input)` permutations is _impossible_
   - asserting that for any `input`, results are sorted is _trivial_
@@ -198,7 +199,7 @@ assert_eq!(ranges, vec![0..10, 40..50]);
 # Snapshot
 
 - not a technique in itself
-- for unit and integration tests on complex data
+- enhance unit and integration tests on complex data
 - fast **reference data creation and review**
 
 ## When?
