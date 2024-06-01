@@ -1,46 +1,28 @@
 {
-  description = "A Nix-flake-based Rust development environment";
+  description = "Rust development environment (https://github.com/oxalica/rust-overlay/blob/ab69b67fac9a96709fbef0b899db308ca714a120/README.md#use-in-devshell-for-nix-develop)";
 
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.*.tar.gz";
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url      = "github:NixOS/nixpkgs/nixos-unstable";
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    flake-utils.url  = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, rust-overlay }:
-    let
-      overlays = [
-        rust-overlay.overlays.default
-        (final: prev: {
-          rustToolchain =
-            let
-              rust = prev.rust-bin;
-            in
-            if builtins.pathExists ./rust-toolchain.toml then
-              rust.fromRustupToolchainFile ./rust-toolchain.toml
-            else if builtins.pathExists ./rust-toolchain then
-              rust.fromRustupToolchainFile ./rust-toolchain
-            else
-              rust.stable.latest.default.override {
-                extensions = [ "rust-src" "rustfmt" ];
-              };
-        })
-      ];
-      supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
-      forEachSupportedSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f {
-        pkgs = import nixpkgs { inherit overlays system; };
-      });
-    in
-    {
-      devShells = forEachSupportedSystem ({ pkgs }: {
-        default = pkgs.mkShell {
-          packages = with pkgs; [
-            rustToolchain
+  outputs = { nixpkgs, rust-overlay, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        overlays = [ (import rust-overlay) ];
+        pkgs = import nixpkgs {
+          inherit system overlays;
+        };
+      in
+      {
+        devShells.default = with pkgs; mkShell {
+          buildInputs = [
+            (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
             openssl
             pkg-config
             cargo-deny
+            # cargo-llvm-cov # Marked as broken in Nix, https://github.com/NixOS/nixpkgs/blob/e2dd4e18cc1c7314e24154331bae07df76eb582f/pkgs/development/tools/rust/cargo-llvm-cov/default.nix#L97
             cargo-edit
             cargo-insta
             cargo-fuzz
@@ -50,7 +32,13 @@
             pandoc
             gnumake
           ];
+
+          shellHook = ''
+            # Marked as broken in Nix; I don't have the time figuring out Rust nightly,
+            # LLVM tooling, and Nix (overlays) in combination.
+            cargo install cargo-llvm-cov
+          '';
         };
-      });
-    };
+      }
+    );
 }

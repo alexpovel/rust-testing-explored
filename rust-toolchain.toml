@@ -3,3 +3,10 @@
 # ones weren't available, and I ran into
 # https://github.com/rust-lang/rust-analyzer/issues/16331 .
 channel = "nightly-2023-10-20"
+components = [
+    # This list is *additive* (https://rust-lang.github.io/rustup/overrides.html#components)
+
+    # https://rust-lang.github.io/rustup/concepts/components.html#components, needed for
+    # https://doc.rust-lang.org/stable/rustc/instrument-coverage.html#installing-llvm-coverage-tools
+    "llvm-tools",
+]

@@ -258,3 +258,4 @@ Thank you very much for your attention!
 - [`README.md` doc testing](https://github.com/alexpovel/srgn/blob/1a8b3a0bd2f3bb57cc2ede7463ac725a1bb581e4/tests/readme.rs)
 - [Announcing Better Support for Fuzzing with Structured Inputs in Rust](https://fitzgeraldnick.com/2020/01/16/better-support-for-fuzzing-structured-inputs-in-rust.html)
 - [How to write tests](https://doc.rust-lang.org/book/ch11-01-writing-tests.html)
+- [Instrumentation-based Code Coverage](https://doc.rust-lang.org/stable/rustc/instrument-coverage.html)

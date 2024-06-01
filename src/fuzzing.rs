@@ -1,7 +1,7 @@
 //! Copied from https://github.com/alexpovel/b4s/tree/c6ccf71cccfde2e12e1e9e1cc0e07ce5ccf802f2
 pub use ascii::AsciiChar;
 use itertools::Itertools;
-use std::{cmp::Ordering, ops::Range};
+use std::{cmp::Ordering, env, ops::Range};
 
 pub fn binary_search(
     needle: &str,
@@ -34,7 +34,7 @@ pub fn binary_search(
             None => rightmost,
         };
 
-        let range = if cfg!(fuzzing) {
+        let range = if env::var("FAIL").is_ok() {
             start..(end + 1) // ⚠️ Off-by-one error
         } else {
             start..end

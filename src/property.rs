@@ -1,7 +1,7 @@
 //! Copied from https: //github.com/alexpovel/srgn/tree/06b17c10e4be0a12acae74a6f3b00cf7e5960414
 use itertools::Itertools;
 use proptest_derive::Arbitrary;
-use std::{fmt::Debug, ops::Range, slice::Iter};
+use std::{env, fmt::Debug, ops::Range, slice::Iter};
 
 /// A collection of [`Range`]s.
 ///
@@ -80,7 +80,7 @@ impl<Idx: Ord + Copy + Debug> Ranges<Idx> {
         self.inner = res;
         self.inner.shrink_to_fit(); // Might have removed elements, so yield memory back
 
-        self.merged = true; // ⚠️ Triggers bug, caught by property testing
+        self.merged = env::var("FAIL").is_ok(); // ⚠️ Triggers bug, caught by property testing
         self
     }
 
