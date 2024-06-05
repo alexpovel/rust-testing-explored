@@ -2,7 +2,7 @@
 title: Testing in Rust
 subtitle: Towards fearless development
 author: 'Alex Povel'
-date: '2024-06-05'
+date: 'June 5, 2024'
 theme: dracula
 ---
 
